@@ -1,6 +1,7 @@
 import chrome from "chrome-aws-lambda";
 import { launch } from "puppeteer-core";
 
+
 const exePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 interface Options {
@@ -19,9 +20,9 @@ async function getOptions(isDev: boolean) {
     };
   } else {
     options = {
-      args: chrome.args,
+      args: ['--no-sandbox'],
       executablePath: await chrome.executablePath,
-      headless: chrome.headless
+      headless: true
     };
   }
   return options;
