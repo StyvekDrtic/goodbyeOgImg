@@ -4,9 +4,9 @@
   "description": "Generate an OG Image",
   "main": "dist/card.js",
   "scripts": {
-    "build": "tsc",
-    "now-build": "tsc",
-    "watch": "tsc --watch"
+    "build": "AWS_LAMBDA_FUNCTION_NAME=true tsc",
+    "now-build": "AWS_LAMBDA_FUNCTION_NAME=true tsc",
+    "watch": "AWS_LAMBDA_FUNCTION_NAME=true tsc --watch"
   },
   "license": "MIT",
   "dependencies": {
