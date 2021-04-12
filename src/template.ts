@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 
 export function getHtml(parsedReqs: ParsedReqs) {
   const { zesnuly, datum, image } = parsedReqs;

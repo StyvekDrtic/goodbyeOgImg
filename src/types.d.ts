@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 interface ParsedReqs {
   zesnuly: string;
   datum: string;

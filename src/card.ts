@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { IncomingMessage, ServerResponse } from "http";
 import { parseReqs } from "./parser";
 import { getHtml } from "./template";

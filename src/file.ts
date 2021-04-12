@@ -1,3 +1,6 @@
+// @ts-nocheck
+
+
 import { createHash } from "crypto";
 import { join } from "path";
 import { tmpdir } from "os";
