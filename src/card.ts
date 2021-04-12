@@ -19,7 +19,7 @@ export default async function handler(
     const filePath = await writeTempFile(fileName, html);
     const fileUrl = `file://${filePath}`;
 
-    const file = await getScreenshot(fileUrl, isDev);
+    const file = await getScreenshot(fileUrl);
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "image/jpeg");
