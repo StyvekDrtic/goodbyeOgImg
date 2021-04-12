@@ -4,7 +4,7 @@ import { getHtml } from "./template";
 import { writeTempFile } from "./file";
 import { getScreenshot } from "./chromium";
 
-const isDev = process.env.NOW_REGION === "dev1";
+// const isDev = process.env.NOW_REGION === "dev1";
 
 export default async function handler(
   req: IncomingMessage,
