@@ -1,7 +1,6 @@
 interface ParsedReqs {
-  author: string;
-  title: string;
-  website: string;
+  zesnuly: string;
+  datum: string;
   image: string;
 }
 
