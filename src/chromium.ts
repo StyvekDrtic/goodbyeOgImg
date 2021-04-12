@@ -1,38 +1,31 @@
-import chrome from "chrome-aws-lambda";
-import { launch } from "puppeteer-core";
+import chrome from 'chrome-aws-lambda';
+import puppeteer from 'puppeteer-core';
 
 
-const exePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
-interface Options {
-  args: string[];
-  executablePath: string;
-  headless: boolean;
-}
 
-async function getOptions(isDev: boolean) {
-  let options: Options;
-  if (isDev) {
-    options = {
-      args: [],
-      executablePath: exePath,
-      headless: true
-    };
-  } else {
-    options = {
-      args: ['--no-sandbox'],
+export async function getScreenshot(url: string) {
+
+
+  let options = process.env.AWS_REGION
+  ? {
+      args: chrome.args,
       executablePath: await chrome.executablePath,
-      headless: true
+      headless: chrome.headless
+    }
+  : {
+      args: [],
+      executablePath:
+        process.platform === 'win32'
+          ? 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+          : process.platform === 'linux'
+          ? '/usr/bin/google-chrome'
+          : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
     };
-  }
-  return options;
-}
 
-export async function getScreenshot(url: string, isDev: boolean) {
-  const options = await getOptions(isDev);
-  const browser = await launch(options);
+  const browser = await puppeteer.launch(options);
   const page = await browser.newPage();
   await page.setViewport({ width: 1200, height: 630 });
-  await page.goto(url);
+  await page.goto(url, { waitUntil: 'networkidle0' });
   return page.screenshot({ type: "jpeg", quality: 100 });
 }
