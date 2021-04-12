@@ -6,10 +6,10 @@ export function parseReqs(req: IncomingMessage) {
   const { zesnuly, datum, image } = query;
 
   if (Array.isArray(zesnuly)) {
-    throw new Error("Author must be string");
+    throw new Error("Zesnuly must be string");
   }
   if (Array.isArray(datum)) {
-    throw new Error("Author must be string");
+    throw new Error("Datum must be string");
   }
   if (Array.isArray(image)) {
     throw new Error("Image must be string");

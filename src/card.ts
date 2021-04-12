@@ -14,8 +14,8 @@ export default async function handler(
     const parsedReqs = parseReqs(req);
     const html = getHtml(parsedReqs);
 
-    const { title, author } = parsedReqs;
-    const fileName = [title, author].join("-");
+    const { zesnuly, datum } = parsedReqs;
+    const fileName = [zesnuly, datum].join("-");
     const filePath = await writeTempFile(fileName, html);
     const fileUrl = `file://${filePath}`;
 
